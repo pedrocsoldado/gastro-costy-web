@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastrocosty - Control Inteligente de Compras para Hostelería</title>
+  <meta name="description" content="Protege el margen de tu restaurante de forma automática. Gastrocosty digitaliza albaranes, detecta tachaduras manuscritas y compara albaranes con facturas para cazar subidas de precio ocultas.">
+  <meta name="keywords" content="control de compras, hosteleria, ocr restaurantes, escandallo, albaranes, facturas, restauracion, hosteleria software">
+  <meta name="author" content="Gastrocosty">
+  
+  <!-- Estilos y Tipografías -->
+  <link rel="stylesheet" href="index.css">
+  
+  <!-- Icono de pestaña (Favicon básico por código) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2310B981%22/><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22%23ffffff%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%23FF6B4A%22/></svg>">
+</head>
+<body>
+
+  <!-- Luces de Ambiente Mesh (Fondo Premium, Alegre y Vivo) -->
+  <div class="ambient-glows">
+    <div class="glow-circle glow-1"></div>
+    <div class="glow-circle glow-2"></div>
+    <div class="glow-circle glow-3"></div>
+  </div>
+
+  <!-- Barra de Navegación -->
+  <header>
+    <nav class="navbar glass" id="mainNavbar">
+      <a href="#" class="logo-container" id="navLogo">
+        <!-- Logotipo SVG Vectorial Premium e Instantáneo -->
+        <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="10" fill="url(#logo-grad)" />
+          <path d="M12 25C12 18.9249 16.9249 14 23 14V25H12Z" fill="white" />
+          <circle cx="27" cy="27" r="4" fill="#FF8F50" />
+          <defs>
+            <linearGradient id="logo-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#10B981" />
+              <stop offset="1" stop-color="#FF2E93" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">Gastro<span class="text-gradient-green">costy</span><span class="logo-dot">.</span></span>
+      </a>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#dolores">El Caos</a></li>
+        <li><a href="#soluciones">Beneficios</a></li>
+        <li><a href="#funcionamiento">Cómo Funciona</a></li>
+        <li><a href="#calculadora">Calculadora ROI</a></li>
+        <li><a href="#simulador">Ver Demo</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="#calculadora" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" id="ctaNavbar">Probar Gratis</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir Menú">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SECCIÓN HERO -->
+    <section class="container hero" id="inicio">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <!-- Icono de Escudo de Seguridad / Margen -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          El guardián de tus márgenes de cocina
+        </div>
+        <h1 class="hero-title text-gradient">
+          Protege los márgenes de tu restaurante de forma <span class="text-gradient-green">automática.</span>
+        </h1>
+        <p class="hero-description">
+          Gastrocosty es el primer software inteligente diseñado para la hostelería que digitaliza tus albaranes, detecta tachones a mano y "caza" las subidas de precio ocultas en tus facturas. Control absoluto sin teclear un solo dato.
+        </p>
+        <div class="hero-actions">
+          <a href="#calculadora" class="btn btn-primary" id="btnHeroPrimary">Empezar a Ahorrar</a>
+          <a href="#simulador" class="btn btn-secondary" id="btnHeroSecondary">Ver Demo en Vivo</a>
+        </div>
+      </div>
+      
+      <!-- Contenedor Visual de Mockup Animado (Claro y Alegre) -->
+      <div class="hero-visual reveal">
+        <div class="mockup-container glass">
+          <div class="mockup-header">
+            <div class="mockup-dots">
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+            </div>
+            <div class="mockup-tab-title">AUDITORÍA GASTROCOSTY</div>
+            <div style="width: 42px;"></div>
+          </div>
+          
+          <div class="scan-simulation">
+            <div class="doc-comparison">
+              <!-- Representación del Albarán Físico -->
+              <div class="paper-invoice-sim">
+                <div style="font-weight: 700; font-size: 0.65rem; color: var(--text-primary); margin-bottom: 0.25rem;">ALBARÁN Nº 8740</div>
+                <div style="font-size: 0.55rem; color: var(--text-muted); margin-bottom: 0.5rem;">Proveedor: Lácteos Norte</div>
+                <div class="paper-line"></div>
+                <div class="paper-line"></div>
+                <div class="paper-line scribble"></div>
+                <div class="paper-line" style="width: 50%;"></div>
+                <div style="border-top: 1px solid rgba(0,0,0,0.05); margin-top: auto; padding-top: 0.25rem; display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--text-secondary);">
+                  <span>Base Imponible:</span>
+                  <span style="font-weight: 600;">145,20 €</span>
+                </div>
+              </div>
+              
+              <!-- Representación de la Pantalla de Software -->
+              <div class="app-dashboard-sim">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; color: #10B981;">DIGITALIZADO</span>
+                  <span class="semaphore semaphore-green" style="font-size: 0.55rem; padding: 0.15rem 0.4rem;">✅ Conciliado</span>
+                </div>
+                
+                <div class="comparison-box">
+                  <div class="comp-item-header">
+                    <span>Leche Desnatada 1L</span>
+                    <span style="color: #ef4444; font-size: 0.65rem;">🚨 Mismatch</span>
+                  </div>
+                  <div class="comp-values">
+                    <span>Albarán Validado:</span>
+                    <span style="font-weight: 700; color: var(--text-primary);">0.90 €/u</span>
+                  </div>
+                  <div class="comp-values" style="margin-top: 0.15rem;">
+                    <span>Precio en Factura:</span>
+                    <span style="font-weight: 700; color: #ef4444;">0.98 €/u</span>
+                  </div>
+                  <div class="comp-price-alert">
+                    <span>Alerta: Subida de +8.8%</span>
+                    <div class="glow-point"></div>
+                  </div>
+                </div>
+                
+                <div style="font-size: 0.6rem; color: var(--text-secondary); text-align: center; font-weight: 500;">
+                  Ahorro en este documento: <strong style="color: var(--color-primary);">+28.50 €</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN EL DOLOR (EL CAOS EN COCINA) -->
+    <section class="pain-section" id="dolores">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">El problema real</span>
+          <h2 class="section-title">¿Sabes cuánto dinero se te escapa entre los fogones de tu cocina?</h2>
+          <p class="section-subtitle">La gestión de compras tradicional en restauración está llena de fugas invisibles que merman tus beneficios mes a mes.</p>
+        </div>
+        
+        <div class="pain-grid">
+          <!-- Dolor 1 -->
+          <div class="pain-card glass reveal">
+            <div class="pain-icon">
+              <!-- SVG Premium: Impuesto Silencioso (Balanza de Desequilibrio) -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="2" x2="12" y2="22"></line>
+                <line x1="5" y1="7" x2="19" y2="7"></line>
+                <path d="M5 7l3 10h8l3-10"></path>
+                <path d="M9 21h6"></path>
+              </svg>
+            </div>
+            <h3>El "Impuesto Silencioso" de los Proveedores</h3>
+            <p>Los precios de las materias primas fluctúan constantemente. Sin darte cuenta, tu proveedor te factura a un precio superior al que pactaste en la entrega. Detectar esto a mano en cientos de albaranes de papel es una labor titánica.</p>
+          </div>
+          
+          <!-- Dolor 2 -->
+          <div class="pain-card glass reveal">
+            <div class="pain-icon">
+              <!-- SVG Premium: El Caos del Papel (Documento con una X rota de tachadura) -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="8" y1="13" x2="16" y2="13"></line>
+                <line x1="8" y1="17" x2="14" y2="17"></line>
+                <path d="M9 9l6 6" stroke="#ef4444" stroke-width="2.5"></path>
+              </svg>
+            </div>
+            <h3>Tachones y Devoluciones a Bolígrafo</h3>
+            <p>Cuando un repartidor entrega mercancía de menos, el cocinero lo tacha a mano en el albarán. Si ese papel se archiva sin corregirse en el sistema contable, acabarás pagando la factura completa por materias primas que nunca llegaron.</p>
+          </div>
+          
+          <!-- Dolor 3 -->
+          <div class="pain-card glass reveal">
+            <div class="pain-icon">
+              <!-- SVG Premium: Horas de Oficina (Reloj de arena integrado con reloj de manecillas) -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>Horas de Oficina por las Noches</h3>
+            <p>El papeleo y la conciliación manual de facturas te roba tu valioso tiempo libre. Después de un servicio intenso en el restaurante, lo último que deseas es pasar horas tecleando datos en hojas de Excel propensas a fallos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CÓMO FUNCIONA (EL FLUJO DE TRABAJO COMERCIAL) -->
+    <section class="flow-section" id="funcionamiento">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Simplicidad Absoluta</span>
+          <h2 class="section-title">Conciliación de compras en tres sencillos pasos</h2>
+          <p class="section-subtitle">Hemos diseñado un flujo de trabajo intuitivo adaptado al ritmo y al ajetreo diario de una cocina profesional.</p>
+        </div>
+        
+        <div class="flow-grid">
+          <!-- Paso 1 -->
+          <div class="flow-step reveal">
+            <div class="flow-number">1</div>
+            <h3>Captura del Papel</h3>
+            <p>Toma una foto de los albaranes al recibir la mercancía o arrastra los PDF de tus facturas. Nuestro OCR optimizado los lee y procesa al instante.</p>
+          </div>
+          
+          <!-- Paso 2 -->
+          <div class="flow-step reveal">
+            <div class="flow-number">2</div>
+            <h3>Validación del Albarán</h3>
+            <p>El personal de cocina confirma que lo entregado coincide físicamente con el papel. El sistema detecta marcas o tachados manuales y ajusta el inventario real.</p>
+          </div>
+          
+          <!-- Paso 3 -->
+          <div class="flow-step reveal">
+            <div class="flow-number">3</div>
+            <h3>Caza del Descuadre</h3>
+            <p>Al subir la factura mensual, Gastrocosty cruza los datos con los albaranes correspondientes. Si hay alguna subida de precio no autorizada, te alerta de inmediato.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CARACTERÍSTICAS / SOLUCIONES CLAVE (ICONOS SVG HECHOS A MANO) -->
+    <section class="features-section" id="soluciones">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">La Solución Todo-en-Uno</span>
+          <h2 class="section-title">Diseñado exclusivamente para el éxito de tu negocio hostelero</h2>
+          <p class="section-subtitle">Gastrocosty elimina los errores administrativos y protege activamente tus márgenes de ganancia con herramientas inteligentes.</p>
+        </div>
+        
+        <div class="features-grid">
+          <!-- Característica 1 -->
+          <div class="feature-card glass reveal">
+            <div class="feature-header">
+              <div class="feature-badge-icon">
+                <!-- SVG HECHO A MANO: La "Caza" de Precios -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+                  <path d="M11 8V14M8 11H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M18 6L21 3" stroke="#FF2E93" stroke-width="2" stroke-linecap="round" />
+                  <path d="M21 7V3H17" stroke="#FF2E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>La "Caza" de Precios: Albarán vs Factura</h3>
+            </div>
+            <p>
+              El corazón del sistema. Gastrocosty compara de forma atómica cada artículo facturado frente al precio del albarán entregado. Si el proveedor aumenta el precio de forma injustificada o sin previo aviso en la factura, el sistema lanza una alerta crítica destacando el importe exacto para que reclames tu abono.
+            </p>
+          </div>
+          
+          <!-- Característica 2 -->
+          <div class="feature-card glass reveal">
+            <div class="feature-header">
+              <div class="feature-badge-icon">
+                <!-- SVG HECHO A MANO: OCR Anti-Tachones -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 3H19C20.1 3 21 3.9 21 5V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3Z" stroke="currentColor" stroke-width="2" />
+                  <path d="M7 8H17M7 12H13M7 16H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M15 13L19 17M19 13L15 17" stroke="#FF2E93" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Inteligencia OCR Anti-Tachones</h3>
+            </div>
+            <p>
+              En la hostelería es habitual corregir cantidades a mano sobre el albarán físico cuando falta mercancía. Nuestro motor de IA lee e interpreta los tachones manuscritos del chef, propone un nuevo total aritmético y alerta sobre devoluciones o "abonos pendientes" de registrar para que no pierdas un solo euro.
+            </p>
+          </div>
+          
+          <!-- Característica 3 -->
+          <div class="feature-card glass reveal">
+            <div class="feature-header">
+              <div class="feature-badge-icon">
+                <!-- SVG HECHO A MANO: Semáforos -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="2" width="8" height="20" rx="4" stroke="currentColor" stroke-width="2" />
+                  <circle cx="12" cy="7" r="2.5" fill="#ef4444" />
+                  <circle cx="12" cy="12" r="2.5" fill="#f59e0b" />
+                  <circle cx="12" cy="17" r="2.5" fill="#10b981" />
+                </svg>
+              </div>
+              <h3>Gestión por Código de Semáforos</h3>
+            </div>
+            <p>
+              Visualiza el estado de tus compras con la rapidez que exige tu negocio. El sistema utiliza semáforos intuitivos: <strong>Amarillo</strong> para documentos en proceso OCR, <strong>Rojo</strong> para errores matemáticos o descuadres de lectura que requieren atención, y <strong>Verde</strong> para documentos validados y listos para conciliar.
+            </p>
+          </div>
+          
+          <!-- Característica 4 -->
+          <div class="feature-card glass reveal">
+            <div class="feature-header">
+              <div class="feature-badge-icon">
+                <!-- SVG HECHO A MANO: Unificación de Formatos -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>Unificación de Formatos Inteligente</h3>
+            </div>
+            <p>
+              ¿Tu distribuidor te vende a veces por cajas, otras por botella o cambia entre 500ml y 0.5L? Gastrocosty descompone de forma atómica cada unidad y la traduce a tu unidad base. Así sabrás con total precisión cuánto te cuesta cada gramo o mililitro de materia prima, impidiendo trucos de formato de los proveedores.
+            </p>
+          </div>
+
+          <!-- Característica 5 -->
+          <div class="feature-card glass reveal">
+            <div class="feature-header">
+              <div class="feature-badge-icon">
+                <!-- SVG HECHO A MANO: Separación de Gastos -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 3H2L10 12.46V19L14 21V12.46L22 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="12" cy="7" r="2" fill="#FF2E93" />
+                </svg>
+              </div>
+              <h3>Separación Automática de Gastos Generales</h3>
+            </div>
+            <p>
+              Gastrocosty sabe qué es inventario de cocina y qué no. Las facturas de luz, alquiler, gestoría o reparaciones se clasifican automáticamente como "Gasto General". Así, el catálogo de materias primas de tu restaurante y tus escandallos se mantienen limpios y libres de distorsiones contables.
+            </p>
+          </div>
+
+          <!-- Característica 6 -->
+          <div class="feature-card glass reveal">
+            <div class="feature-header">
+              <div class="feature-badge-icon">
+                <!-- SVG HECHO A MANO: Cómputo de Coste Real con Impuestos -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="2" width="16" height="20" rx="2" stroke="currentColor" stroke-width="2" />
+                  <line x1="8" y1="6" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="8.5" cy="11.5" r="1.5" fill="currentColor" />
+                  <circle cx="15.5" cy="11.5" r="1.5" fill="currentColor" />
+                  <circle cx="8.5" cy="16.5" r="1.5" fill="currentColor" />
+                  <circle cx="15.5" cy="16.5" r="1.5" fill="#FF2E93" />
+                </svg>
+              </div>
+              <h3>Cómputo de Coste Real con Impuestos</h3>
+            </div>
+            <p>
+              Calcula tus márgenes sobre costes de adquisición reales. Gastrocosty integra en el coste unitario del artículo los impuestos especiales (tasas al plástico, bebidas azucaradas) y el Recargo de Equivalencia (RE) prorrateado. Por defecto, te muestra los precios limpios sin IVA, tal y como se gestiona la contabilidad B2B.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CALCULADORA DE ROI INTERACTIVA -->
+    <section class="calculator-section" id="calculadora">
+      <div class="container">
+        <div class="calculator-wrapper glass reveal">
+          <div class="calc-control">
+            <span class="section-badge" style="align-self: flex-start;">Simula tu Ahorro</span>
+            <h2 class="section-title" style="font-size: 2.25rem;">¿Cuánto dinero y tiempo estás perdiendo actualmente?</h2>
+            <p style="color: var(--text-secondary);">
+              Mueve el slider para indicar el volumen aproximado de compras mensuales en alimentación, bebida y suministros de tu restaurante. Mira cómo Gastrocosty amortiza su coste al instante.
+            </p>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <span class="slider-label">Tus compras mensuales:</span>
+                <span class="slider-value" id="spendValue">15.000 €</span>
+              </div>
+              <input type="range" min="5000" max="100000" step="2500" value="15000" class="slider-input" id="spendSlider" aria-label="Slider de compras mensuales">
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);">
+                <span>5.000 €</span>
+                <span>50.000 €</span>
+                <span>100.000 €</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="calc-display">
+            <div class="results-grid">
+              <!-- Ahorro Anual -->
+              <div class="result-card highlighted">
+                <span class="result-label">Ahorro Anual Garantizado</span>
+                <div class="result-num green" id="savingYear">6.300 €</div>
+                <p class="result-subtext" style="margin-top: 0.25rem;">Dinero recuperado de subidas de precio ocultas y errores de facturación (~3.5% de media).</p>
+              </div>
+              
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <!-- Ahorro Mensual -->
+                <div class="result-card">
+                  <span class="result-label">Ahorro Mensual</span>
+                  <div class="result-num text-gradient" id="savingMonth">525 €</div>
+                </div>
+                
+                <!-- Horas Ahorradas -->
+                <div class="result-card">
+                  <span class="result-label">Tiempo Recuperado</span>
+                  <div class="result-num violet" id="hoursSaved">14 horas</div>
+                  <p class="result-subtext">Menos administración al mes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN SIMULADOR INTERACTIVO DEL PANEL DE CONTROL -->
+    <section class="sim-section" id="simulador">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Demo Interactiva</span>
+          <h2 class="section-title">Experimenta la potencia de Gastrocosty en vivo</h2>
+          <p class="section-subtitle">Haz clic en los diferentes pasos de nuestro proceso de control para ver cómo responde la interfaz inteligente en tiempo real.</p>
+        </div>
+        
+        <div class="sim-container reveal">
+          <!-- Columna de Botones/Pasos -->
+          <div class="sim-steps-column">
+            <!-- Paso 1 -->
+            <button class="sim-step-btn active" data-step="step1" aria-label="Simular Escaneo OCR">
+              <span class="sim-step-num">1</span>
+              <div class="sim-step-text">
+                <h4>Clasificación OCR Inteligente</h4>
+                <p>Digitalización rápida con semáforos de advertencia.</p>
+              </div>
+            </button>
+            
+            <!-- Paso 2 -->
+            <button class="sim-step-btn" data-step="step2" aria-label="Simular Validación en Cocina">
+              <span class="sim-step-num">2</span>
+              <div class="sim-step-text">
+                <h4>Revisión Física de Albarán</h4>
+                <p>Captura de correcciones manuales y tachados en papel.</p>
+              </div>
+            </button>
+            
+            <!-- Paso 3 -->
+            <button class="sim-step-btn" data-step="step3" aria-label="Simular Caza de Precios">
+              <span class="sim-step-num">3</span>
+              <div class="sim-step-text">
+                <h4>La "Caza" de Precios de Factura</h4>
+                <p>Auditoría cruzada y reclamaciones de abono automáticas.</p>
+              </div>
+            </button>
+          </div>
+          
+          <!-- Columna del Panel de Visualización Simulado (B2B UI) -->
+          <div class="sim-panel-wrapper">
+            <div class="sim-panel glass">
+              <div class="sim-panel-header">
+                <div class="sim-panel-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="9" y1="9" x2="15" y2="9" />
+                    <line x1="9" y1="13" x2="15" y2="13" />
+                    <line x1="9" y1="17" x2="13" y2="17" />
+                  </svg>
+                  <span id="simPanelHeaderTitle">1. Escaneo Inteligente (Semáforos OCR)</span>
+                </div>
+                <div class="mockup-dots">
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                  <div class="mockup-dot"></div>
+                </div>
+              </div>
+              
+              <!-- El contenido interactivo se carga dinámicamente desde app.js -->
+              <div id="simPanelContent" style="transition: var(--transition-smooth); opacity: 1;">
+                <!-- Cargado inicialmente por JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CTA FINAL DE CONVERSIÓN -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box glass reveal">
+          <h2 class="text-gradient">Toma el control del coste de tu cocina hoy mismo.</h2>
+          <p>
+            No permitas que las subidas silenciosas de tus distribuidores sigan reduciendo la rentabilidad de tu esfuerzo. Únete a los restaurantes que auditan sus compras sin esfuerzo.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+            <a href="#calculadora" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;" id="ctaFinalPrimary">Empezar Prueba Gratuita</a>
+            <a href="mailto:info@gastrocosty.com" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;" id="ctaFinalSecondary">Contactar con Ventas</a>
+          </div>
+          <div style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">
+            ✨ Sin compromiso de permanencia • Configuración inicial en menos de 10 minutos
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA (FOOTER) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Columna de Marca -->
+        <div class="footer-brand">
+          <a href="#" class="logo-container" style="gap: 0.5rem; margin-bottom: 0.5rem;">
+            <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="10" fill="url(#logo-grad-foot)" />
+              <path d="M12 25C12 18.9249 16.9249 14 23 14V25H12Z" fill="white" />
+              <circle cx="27" cy="27" r="4" fill="#FF8F50" />
+              <defs>
+                <linearGradient id="logo-grad-foot" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#10B981" />
+                  <stop offset="1" stop-color="#FF2E93" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text" style="font-size: 1.2rem;">Gastro<span class="text-gradient-green">costy</span></span>
+          </a>
+          <p class="footer-description">
+            La solución de auditoría y digitalización automática de compras que protege el margen de explotación en el sector de la hostelería.
+          </p>
+        </div>
+        
+        <!-- Enlaces de Producto -->
+        <div class="footer-links-col">
+          <h4>Producto</h4>
+          <ul>
+            <li><a href="#dolores">El Caos actual</a></li>
+            <li><a href="#soluciones">Beneficios del Software</a></li>
+            <li><a href="#funcionamiento">Flujo de Trabajo</a></li>
+            <li><a href="#simulador">Demostración en vivo</a></li>
+          </ul>
+        </div>
+        
+        <!-- Recursos & Contacto -->
+        <div class="footer-links-col">
+          <h4>Contacto e Información</h4>
+          <ul>
+            <li><a href="mailto:soporte@gastrocosty.com">Soporte Técnico</a></li>
+            <li><a href="mailto:info@gastrocosty.com">Contacto Comercial</a></li>
+            <li><a href="#calculadora">Calculadora de Pérdidas</a></li>
+            <li><a href="#" onclick="alert('Este proyecto es un diseño conceptual avanzado de Gastrocosty V1.')">Sobre el Proyecto</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Fila de Copyright -->
+      <div class="footer-bottom">
+        <span>&copy; 2026 Gastrocosty. Todos los derechos reservados. Diseñado profesionalmente para el sector hostelería.</span>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" style="color: var(--text-muted); text-decoration: none;" onclick="alert('Aviso Legal Conceptual')">Aviso Legal</a>
+          <a href="#" style="color: var(--text-muted); text-decoration: none;" onclick="alert('Política de Privacidad Conceptual')">Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
