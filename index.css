@@ -68,6 +68,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+section, [id] {
+  scroll-margin-top: 7.5rem; /* Evita que el menú flotante tape el texto al hacer scroll a un enlace */
+}
+
 /* Scrollbar Custom */
 ::-webkit-scrollbar {
   width: 8px;
